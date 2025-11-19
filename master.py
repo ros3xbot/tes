@@ -54,7 +54,8 @@ def show_main_menu(profile):
         info_table,
         title=f"[{get_theme_style('text_title')}]📱 Informasi Akun[/]",
         border_style=get_theme_style("border_info"),
-        expand=True
+        expand=True,
+        padding=(1, 2)
     ))
 
     menu_items = [
