@@ -123,7 +123,7 @@ def show_main_menu(profile):
         left_sys_table.add_row(kode, label)
 
     right_sys_table = Table(show_header=False, box=MINIMAL_DOUBLE_HEAD, pad_edge=False, expand=False)
-    right_sys_table.add_column("Kode", justify="right", style=get_theme_style("text_key"), width=4)
+    right_sys_table.add_column("Kode", justify="right", style=get_theme_style("text_key"), width=6)
     right_sys_table.add_column("Menu", style=get_theme_style("text_body"))
     for kode, label in right_sys:
         right_sys_table.add_row(kode, label)
