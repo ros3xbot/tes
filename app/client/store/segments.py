@@ -25,7 +25,7 @@ def segments(api_key: str, id_token: str, access_token: str, balance: int = 0) -
     path = "dashboard/api/v8/segments"
     payload = {
         "access_token": access_token,
-        "app_version": "8.9.0",
+        "app_version": "8.9.1",
         "current_balance": balance,
         "family_plan_role": "NO_ROLE",
         "is_enterprise": False,
