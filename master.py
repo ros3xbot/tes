@@ -58,7 +58,6 @@ def show_main_menu(profile):
         expand=True
     ))
 
-    # Menu items dibagi dua kolom
     menu_items = [
         ("1", "🔐 Login/Ganti akun"),
         ("2", "📊 Lihat Paket Saya"),
@@ -84,26 +83,22 @@ def show_main_menu(profile):
         ("99", f"[{get_theme_style('text_err')}]⛔ Tutup Aplikasi [/]"),
     ]
 
-    # Bagi dua list
     mid = len(menu_items) // 2
     left_items = menu_items[:mid]
     right_items = menu_items[mid:]
 
-    # Buat tabel kiri
     left_table = Table(show_header=False, box=MINIMAL_DOUBLE_HEAD, expand=True)
-    left_table.add_column("Kode", justify="right", style=get_theme_style("text_key"), width=6)
+    left_table.add_column("Kode", justify="right", style=get_theme_style("text_key"), width=3)
     left_table.add_column("Menu", style=get_theme_style("text_body"))
     for kode, label in left_items:
         left_table.add_row(kode, label)
 
-    # Buat tabel kanan
     right_table = Table(show_header=False, box=MINIMAL_DOUBLE_HEAD, expand=True)
-    right_table.add_column("Kode", justify="right", style=get_theme_style("text_key"), width=6)
+    right_table.add_column("Kode", justify="right", style=get_theme_style("text_key"), width=2)
     right_table.add_column("Menu", style=get_theme_style("text_body"))
     for kode, label in right_items:
         right_table.add_row(kode, label)
 
-    # Gabungkan dua tabel dalam grid
     grid = Table.grid(expand=True)
     grid.add_row(left_table, right_table)
 
