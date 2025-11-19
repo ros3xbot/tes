@@ -37,7 +37,7 @@ from app.client.store.segments import segments
 
 console = Console()
 
-def show_main_menu(profile):
+def show_main_menu(profile, segments):
     clear_screen()
     expired_at_dt = datetime.fromtimestamp(profile.get("balance_expired_at", 0)).strftime("%Y-%m-%d")
     pulsa_str = get_rupiah(profile.get("balance", 0))
