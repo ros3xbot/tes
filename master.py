@@ -88,7 +88,7 @@ def show_main_menu(profile):
     right_items = menu_items[mid:]
 
     def build_table(items):
-        t = Table(show_header=False, box=ROUNDED, pad_edge=False, expand=True)
+        t = Table(show_header=False, box=MINIMAL_DOUBLE_HEAD, pad_edge=False, expand=True)
         t.add_column("Kode", justify="right", style=get_theme_style("text_key"), width=3)
         t.add_column("Menu", style=get_theme_style("text_body"))
         for kode, label in items:
