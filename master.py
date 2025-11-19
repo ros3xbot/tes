@@ -41,6 +41,7 @@ def show_main_menu(profile):
     expired_at_dt = datetime.fromtimestamp(profile.get("balance_expired_at", 0)).strftime("%Y-%m-%d")
     pulsa_str = get_rupiah(profile.get("balance", 0))
 
+    # Informasi akun
     info_table = Table.grid(padding=(0, 1))
     info_table.add_column(justify="left", style=get_theme_style("text_body"))
     info_table.add_column(justify="left", style=get_theme_style("text_value"))
@@ -58,6 +59,7 @@ def show_main_menu(profile):
         padding=(1, 2)
     ))
 
+    # Menu utama
     menu_items = [
         ("1", "Login/Ganti akun"),
         ("2", "Lihat Paket Saya"),
@@ -85,28 +87,34 @@ def show_main_menu(profile):
     left_items = menu_items[:mid]
     right_items = menu_items[mid:]
 
+    # tabel kiri
     left_table = Table(show_header=False, box=MINIMAL_DOUBLE_HEAD, pad_edge=False, expand=False)
     left_table.add_column("Kode", justify="right", style=get_theme_style("text_key"), width=3)
     left_table.add_column("Menu", style=get_theme_style("text_body"))
     for kode, label in left_items:
         left_table.add_row(kode, label)
 
+    # tabel kanan
     right_table = Table(show_header=False, box=MINIMAL_DOUBLE_HEAD, pad_edge=False, expand=False)
-    right_table.add_column("Kode", justify="right", style=get_theme_style("text_key"), width=1)
+    right_table.add_column("Kode", justify="right", style=get_theme_style("text_key"), width=3)
     right_table.add_column("Menu", style=get_theme_style("text_body"))
     for kode, label in right_items:
         right_table.add_row(kode, label)
 
-    grid = Table.grid(expand=True, padding=(0,0))
+    grid = Table.grid(padding=(0,0))
+    grid.add_column(ratio=1)
+    grid.add_column(ratio=1)
     grid.add_row(left_table, right_table)
 
     console.print(Panel(
         grid,
         title=f"[{get_theme_style('text_title')}]✨ Menu Utama ✨[/]",
         border_style=get_theme_style("border_primary"),
-        expand=True
+        expand=True,
+        padding=(0,1)
     ))
 
+    # Pengaturan & Sistem
     sys_items = [
         ("88", f"[{get_theme_style('text_sub')}]🎨 Ganti Tema CLI[/]"),
         ("99", f"[{get_theme_style('text_err')}]⛔ Tutup Aplikasi[/]"),
@@ -128,16 +136,18 @@ def show_main_menu(profile):
     for kode, label in right_sys:
         right_sys_table.add_row(kode, label)
 
-    sys_grid = Table.grid(expand=True, padding=(0,0))
+    sys_grid = Table.grid(padding=(0,0))
+    sys_grid.add_column(ratio=1)
+    sys_grid.add_column(ratio=1)
     sys_grid.add_row(left_sys_table, right_sys_table)
 
     console.print(Panel(
         sys_grid,
-        #title=f"[{get_theme_style('text_title')}]⚙️ Pengaturan & Sistem[/]",
+        title=f"[{get_theme_style('text_title')}]⚙️ Pengaturan & Sistem[/]",
         border_style=get_theme_style("border_warning"),
-        expand=True
+        expand=True,
+        padding=(0,1)
     ))
-
 
 def main():
     ensure_git()
