@@ -122,7 +122,7 @@ def show_main_menu(profile):
         left_sys_table.add_row(kode, label)
 
     right_sys_table = Table(show_header=False, box=MINIMAL_DOUBLE_HEAD, pad_edge=False, expand=False)
-    right_sys_table.add_column("Kode", justify="right", style=get_theme_style("text_key"), width=1)
+    right_sys_table.add_column("Kode", justify="right", style=get_theme_style("text_key"), width=3)
     right_sys_table.add_column("Menu", style=get_theme_style("text_body"))
     for kode, label in right_sys:
         right_sys_table.add_row(kode, label)
@@ -133,7 +133,7 @@ def show_main_menu(profile):
     console.print(Panel(
         sys_grid,
         #title=f"[{get_theme_style('text_title')}]⚙️ Pengaturan & Sistem[/]",
-        border_style=get_theme_style("border_warning"),
+        border_style=get_theme_style("border_info"),
         expand=True
     ))
 
