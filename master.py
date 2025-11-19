@@ -86,7 +86,7 @@ def show_main_menu(profile):
     right_items = menu_items[mid:]
 
     left_table = Table(show_header=False, box=MINIMAL_DOUBLE_HEAD, pad_edge=False, expand=False)
-    left_table.add_column("Kode", justify="right", style=get_theme_style("text_key"), width=3)
+    left_table.add_column("Kode", justify="right", style=get_theme_style("text_key"), width=2)
     left_table.add_column("Menu", style=get_theme_style("text_body"))
     for kode, label in left_items:
         left_table.add_row(kode, label)
@@ -117,7 +117,7 @@ def show_main_menu(profile):
     right_sys = sys_items[mid_sys:]
 
     left_sys_table = Table(show_header=False, box=MINIMAL_DOUBLE_HEAD, pad_edge=False, expand=False)
-    left_sys_table.add_column("Kode", justify="right", style=get_theme_style("text_key"), width=3)
+    left_sys_table.add_column("Kode", justify="right", style=get_theme_style("text_key"), width=2)
     left_sys_table.add_column("Menu", style=get_theme_style("text_body"))
     for kode, label in left_sys:
         left_sys_table.add_row(kode, label)
