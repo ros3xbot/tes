@@ -87,13 +87,13 @@ def show_main_menu(profile):
     right_items = menu_items[mid:]
 
     left_table = Table(show_header=False, box=MINIMAL_DOUBLE_HEAD, expand=True)
-    left_table.add_column("Kode", justify="right", style=get_theme_style("text_key"), width=1)
+    left_table.add_column("Kode", justify="right", style=get_theme_style("text_key"), width=2)
     left_table.add_column("Menu", style=get_theme_style("text_body"))
     for kode, label in left_items:
         left_table.add_row(kode, label)
 
     right_table = Table(show_header=False, box=MINIMAL_DOUBLE_HEAD, expand=True)
-    right_table.add_column("Kode", justify="right", style=get_theme_style("text_key"), width=1)
+    right_table.add_column("Kode", justify="right", style=get_theme_style("text_key"), width=2)
     right_table.add_column("Menu", style=get_theme_style("text_body"))
     for kode, label in right_items:
         right_table.add_row(kode, label)
