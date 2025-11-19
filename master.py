@@ -55,8 +55,7 @@ def show_main_menu(profile):
         info_table,
         title=f"[{get_theme_style('text_title')}]📱 Informasi Akun[/]",
         border_style=get_theme_style("border_info"),
-        expand=True,
-        padding=(1, 2)
+        expand=True
     ))
 
     # Menu utama
@@ -65,9 +64,9 @@ def show_main_menu(profile):
         ("2", "Lihat Paket Saya"),
         ("3", "Paket Hot Promo"),
         ("4", "Paket Hot Promo-2"),
-        ("5", "Buy via Option Code"),
-        ("6", "Buy via Family Code"),
-        ("7", "Buy all Paket"),
+        ("5", "Paket via Option Code"),
+        ("6", "Paket via Family Code"),
+        ("7", "Semua di Family Code"),
         ("8", "Riwayat Transaksi"),
         ("9", "Akrab Organizer"),
         ("10", "Circle"),
@@ -87,34 +86,29 @@ def show_main_menu(profile):
     left_items = menu_items[:mid]
     right_items = menu_items[mid:]
 
-    # tabel kiri
     left_table = Table(show_header=False, box=MINIMAL_DOUBLE_HEAD, pad_edge=False, expand=False)
     left_table.add_column("Kode", justify="right", style=get_theme_style("text_key"), width=3)
     left_table.add_column("Menu", style=get_theme_style("text_body"))
     for kode, label in left_items:
         left_table.add_row(kode, label)
 
-    # tabel kanan
     right_table = Table(show_header=False, box=MINIMAL_DOUBLE_HEAD, pad_edge=False, expand=False)
     right_table.add_column("Kode", justify="right", style=get_theme_style("text_key"), width=3)
     right_table.add_column("Menu", style=get_theme_style("text_body"))
     for kode, label in right_items:
         right_table.add_row(kode, label)
 
-    grid = Table.grid(padding=(0,0))
-    grid.add_column(ratio=1)
-    grid.add_column(ratio=1)
+    grid = Table.grid(expand=True, padding=(0,0))
     grid.add_row(left_table, right_table)
 
     console.print(Panel(
         grid,
         title=f"[{get_theme_style('text_title')}]✨ Menu Utama ✨[/]",
         border_style=get_theme_style("border_primary"),
-        expand=True,
-        padding=(0,1)
+        expand=True
     ))
 
-    # Pengaturan & Sistem
+    # Pengaturan & Sistem (2 tabel juga)
     sys_items = [
         ("88", f"[{get_theme_style('text_sub')}]🎨 Ganti Tema CLI[/]"),
         ("99", f"[{get_theme_style('text_err')}]⛔ Tutup Aplikasi[/]"),
@@ -136,17 +130,14 @@ def show_main_menu(profile):
     for kode, label in right_sys:
         right_sys_table.add_row(kode, label)
 
-    sys_grid = Table.grid(padding=(0,0))
-    sys_grid.add_column(ratio=1)
-    sys_grid.add_column(ratio=1)
+    sys_grid = Table.grid(expand=True, padding=(0,0))
     sys_grid.add_row(left_sys_table, right_sys_table)
 
     console.print(Panel(
         sys_grid,
         title=f"[{get_theme_style('text_title')}]⚙️ Pengaturan & Sistem[/]",
         border_style=get_theme_style("border_warning"),
-        expand=True,
-        padding=(0,1)
+        expand=True
     ))
 
 def main():
