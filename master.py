@@ -133,7 +133,7 @@ def show_main_menu(profile):
     console.print(Panel(
         sys_grid,
         #title=f"[{get_theme_style('text_title')}]⚙️ Pengaturan & Sistem[/]",
-        border_style=get_theme_style("border_info"),
+        border_style=get_theme_style("border_warning"),
         expand=True
     ))
 
