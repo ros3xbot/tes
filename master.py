@@ -58,7 +58,7 @@ def show_main_menu(profile):
         expand=True
     ))
 
-    # Menu utama (tanpa tema & keluar)
+    # Menu utama
     menu_items = [
         ("1", "Login/Ganti akun"),
         ("2", "Lihat Paket Saya"),
@@ -86,21 +86,18 @@ def show_main_menu(profile):
     left_items = menu_items[:mid]
     right_items = menu_items[mid:]
 
-    # tabel kiri compact
     left_table = Table(show_header=False, box=MINIMAL_DOUBLE_HEAD, pad_edge=False, expand=False)
     left_table.add_column("Kode", justify="right", style=get_theme_style("text_key"), width=3)
     left_table.add_column("Menu", style=get_theme_style("text_body"))
     for kode, label in left_items:
         left_table.add_row(kode, label)
 
-    # tabel kanan compact
     right_table = Table(show_header=False, box=MINIMAL_DOUBLE_HEAD, pad_edge=False, expand=False)
-    right_table.add_column("Kode", justify="right", style=get_theme_style("text_key"), width=1)
+    right_table.add_column("Kode", justify="right", style=get_theme_style("text_key"), width=3)
     right_table.add_column("Menu", style=get_theme_style("text_body"))
     for kode, label in right_items:
         right_table.add_row(kode, label)
 
-    # grid rapat
     grid = Table.grid(expand=True, padding=(0,0))
     grid.add_row(left_table, right_table)
 
@@ -111,19 +108,38 @@ def show_main_menu(profile):
         expand=True
     ))
 
-    # Panel terpisah untuk pengaturan & sistem
-    sys_table = Table(show_header=False, box=MINIMAL_DOUBLE_HEAD, pad_edge=False, expand=True)
-    sys_table.add_column("Kode", justify="right", style=get_theme_style("text_key"), width=1)
-    sys_table.add_column("Menu", style=get_theme_style("text_body"))
-    sys_table.add_row("88", f"[{get_theme_style('text_sub')}]🎨 Ganti Tema CLI[/]")
-    sys_table.add_row("99", f"[{get_theme_style('text_err')}]⛔ Tutup Aplikasi[/]")
+    # Pengaturan & Sistem (2 tabel juga)
+    sys_items = [
+        ("88", f"[{get_theme_style('text_sub')}]🎨 Ganti Tema CLI[/]"),
+        ("99", f"[{get_theme_style('text_err')}]⛔ Tutup Aplikasi[/]"),
+    ]
+
+    mid_sys = len(sys_items) // 2
+    left_sys = sys_items[:mid_sys]
+    right_sys = sys_items[mid_sys:]
+
+    left_sys_table = Table(show_header=False, box=MINIMAL_DOUBLE_HEAD, pad_edge=False, expand=False)
+    left_sys_table.add_column("Kode", justify="right", style=get_theme_style("text_key"), width=3)
+    left_sys_table.add_column("Menu", style=get_theme_style("text_body"))
+    for kode, label in left_sys:
+        left_sys_table.add_row(kode, label)
+
+    right_sys_table = Table(show_header=False, box=MINIMAL_DOUBLE_HEAD, pad_edge=False, expand=False)
+    right_sys_table.add_column("Kode", justify="right", style=get_theme_style("text_key"), width=3)
+    right_sys_table.add_column("Menu", style=get_theme_style("text_body"))
+    for kode, label in right_sys:
+        right_sys_table.add_row(kode, label)
+
+    sys_grid = Table.grid(expand=True, padding=(0,0))
+    sys_grid.add_row(left_sys_table, right_sys_table)
 
     console.print(Panel(
-        sys_table,
+        sys_grid,
         title=f"[{get_theme_style('text_title')}]⚙️ Pengaturan & Sistem[/]",
         border_style=get_theme_style("border_warning"),
         expand=True
     ))
+
 
 def main():
     ensure_git()
