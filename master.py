@@ -98,7 +98,7 @@ def show_main_menu(profile):
     for kode, label in right_items:
         right_table.add_row(kode, label)
 
-    grid = Table.grid(expand=True)
+    grid = Table.grid(expand=True, padding=(0,0))
     grid.add_row(left_table, right_table)
 
     console.print(Panel(
@@ -107,7 +107,6 @@ def show_main_menu(profile):
         border_style=get_theme_style("border_primary"),
         expand=True
     ))
-
 
 def main():
     ensure_git()
