@@ -87,16 +87,19 @@ def show_main_menu(profile):
     left_items = menu_items[:mid]
     right_items = menu_items[mid:]
 
-    def build_table(items):
-        t = Table(show_header=False, box=MINIMAL_DOUBLE_HEAD, pad_edge=False, expand=True)
-        t.add_column("Kode", justify="right", style=get_theme_style("text_key"), width=3)
-        t.add_column("Menu", style=get_theme_style("text_body"))
-        for kode, label in items:
-            t.add_row(kode, label)
-        return t
+    # tabel kiri
+    left_table = Table(show_header=False, box=MINIMAL_DOUBLE_HEAD, pad_edge=False, expand=False)
+    left_table.add_column("Kode", justify="right", style=get_theme_style("text_key"), width=3)
+    left_table.add_column("Menu", style=get_theme_style("text_body"))
+    for kode, label in left_items:
+        left_table.add_row(kode, label)
 
-    left_table = build_table(left_items)
-    right_table = build_table(right_items)
+    # tabel kanan
+    right_table = Table(show_header=False, box=MINIMAL_DOUBLE_HEAD, pad_edge=False, expand=False)
+    right_table.add_column("Kode", justify="right", style=get_theme_style("text_key"), width=3)
+    right_table.add_column("Menu", style=get_theme_style("text_body"))
+    for kode, label in right_items:
+        right_table.add_row(kode, label)
 
     grid = Table.grid(padding=(0,0))
     grid.add_column(ratio=1)
@@ -121,8 +124,17 @@ def show_main_menu(profile):
     left_sys = sys_items[:mid_sys]
     right_sys = sys_items[mid_sys:]
 
-    left_sys_table = build_table(left_sys)
-    right_sys_table = build_table(right_sys)
+    left_sys_table = Table(show_header=False, box=MINIMAL_DOUBLE_HEAD, pad_edge=False, expand=False)
+    left_sys_table.add_column("Kode", justify="right", style=get_theme_style("text_key"), width=3)
+    left_sys_table.add_column("Menu", style=get_theme_style("text_body"))
+    for kode, label in left_sys:
+        left_sys_table.add_row(kode, label)
+
+    right_sys_table = Table(show_header=False, box=MINIMAL_DOUBLE_HEAD, pad_edge=False, expand=False)
+    right_sys_table.add_column("Kode", justify="right", style=get_theme_style("text_key"), width=3)
+    right_sys_table.add_column("Menu", style=get_theme_style("text_body"))
+    for kode, label in right_sys:
+        right_sys_table.add_row(kode, label)
 
     sys_grid = Table.grid(padding=(0,0))
     sys_grid.add_column(ratio=1)
@@ -137,10 +149,8 @@ def show_main_menu(profile):
         padding=(0,1)
     ))
 
-
 def main():
     ensure_git()
-
     while True:
         active_user = AuthInstance.get_active_user()
         if not active_user:
