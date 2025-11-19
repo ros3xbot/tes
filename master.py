@@ -88,7 +88,7 @@ def show_main_menu(profile):
     right_items = menu_items[mid:]
 
     def build_table(items):
-        t = Table(show_header=False, box=ROUNDED, pad_edge=False, expand=False)
+        t = Table(show_header=False, box=ROUNDED, pad_edge=False, expand=True)
         t.add_column("Kode", justify="right", style=get_theme_style("text_key"), width=3)
         t.add_column("Menu", style=get_theme_style("text_body"))
         for kode, label in items:
@@ -99,8 +99,8 @@ def show_main_menu(profile):
     right_table = build_table(right_items)
 
     grid = Table.grid(padding=(0,0))
-    grid.add_column(justify="left", ratio=1)
-    grid.add_column(justify="right", ratio=1)
+    grid.add_column(ratio=1)
+    grid.add_column(ratio=1)
     grid.add_row(left_table, right_table)
 
     console.print(Panel(
@@ -125,8 +125,8 @@ def show_main_menu(profile):
     right_sys_table = build_table(right_sys)
 
     sys_grid = Table.grid(padding=(0,0))
-    sys_grid.add_column(justify="left", ratio=1)
-    sys_grid.add_column(justify="right", ratio=1)
+    sys_grid.add_column(ratio=1)
+    sys_grid.add_column(ratio=1)
     sys_grid.add_row(left_sys_table, right_sys_table)
 
     console.print(Panel(
@@ -136,6 +136,7 @@ def show_main_menu(profile):
         expand=True,
         padding=(0,1)
     ))
+
 
 def main():
     ensure_git()
