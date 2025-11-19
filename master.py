@@ -6,7 +6,7 @@ from datetime import datetime
 from rich.console import Console
 from rich.panel import Panel
 from rich.table import Table
-from rich.box import MINIMAL_DOUBLE_HEAD, ROUNDED
+from rich.box import MINIMAL_DOUBLE_HEAD
 from app.config.theme_config import get_theme_style
 from app.menus.util import (
     clear_screen, pause, print_panel, print_error, print_warning, get_rupiah
@@ -57,6 +57,42 @@ def show_main_menu(profile):
         expand=True,
         padding=(1, 2)
     ))
+
+
+    special_packages = segments.get("special_packages", [])
+    if special_packages:
+        best = random.choice(special_packages)
+
+        name = best.get("name", "-")
+        diskon_percent = best.get("diskon_percent", 0)
+        diskon_price = best.get("diskon_price", 0)
+        original_price = best.get("original_price", 0)
+        emoji_diskon = "💸" if diskon_percent >= 50 else ""
+        emoji_kuota = "🔥" if best.get("kuota_gb", 0) >= 100 else ""
+
+        special_text = (
+            f"[bold {theme['text_title']}]🔥🔥🔥 Paket Special Untukmu! 🔥🔥🔥[/{theme['text_title']}]\n\n"
+            f"[{theme['text_body']}]{emoji_kuota} {name}[/{theme['text_body']}]\n"
+            f"Diskon {diskon_percent}% {emoji_diskon} "
+            f"Rp[{theme['text_err']}][strike]{get_rupiah(original_price)}[/strike][/{theme['text_err']}] ➡️ "
+            f"Rp[{theme['text_money']}]{get_rupiah(diskon_price)}[/{theme['text_money']}]"
+        )
+
+        panel_width = console.size.width
+        console.print(
+            Panel(
+                Align.center(special_text),
+                border_style=theme["border_warning"],
+                padding=(0, 2),
+                width=panel_width
+            )
+        )
+
+        console.print(Align.center(
+            f"[{theme['text_sub']}]Pilih [S] untuk lihat semua paket spesial[/{theme['text_sub']}]"
+        ))
+
+
 
     menu_items = [
         ("1", "Login/Ganti akun"),
