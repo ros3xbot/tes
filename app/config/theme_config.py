@@ -267,7 +267,7 @@ def get_theme_style(key: str, default: str = "red") -> str:
 def set_theme(name):
     if name in THEMES:
         _save_config({"active_theme": name})
-        get_theme(force_reload=True)  # refresh cache
+        get_theme(force_reload=True)
         return True
     return False
 
