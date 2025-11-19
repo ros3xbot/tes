@@ -35,7 +35,7 @@ AES_KEY = ensure_env_key("AES_KEY")
 AES_KEY_ASCII = os.getenv("AES_KEY_ASCII")
 AX_FP_KEY = os.getenv("AX_FP_KEY")
 
-# BASE_CRYPTO_URL = "http://127.0.0.1:5000/api/890"  # For local testing
+# BASE_CRYPTO_URL = "http://127.0.0.1:5000/api/891"  # For local testing
 ENC_URL = "vnVcQAw1uTWZ8OelPIKmWvfwONQLoI+5fjbNexbUtYY="
 IV = b"\x00" * 16
 BASE_CRYPTO_URL = decrypt_url(ENC_URL, AES_KEY, IV)
