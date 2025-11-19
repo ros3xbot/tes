@@ -41,6 +41,7 @@ def show_main_menu(profile):
     expired_at_dt = datetime.fromtimestamp(profile.get("balance_expired_at", 0)).strftime("%Y-%m-%d")
     pulsa_str = get_rupiah(profile.get("balance", 0))
 
+    # Informasi akun
     info_table = Table.grid(padding=(0, 1))
     info_table.add_column(justify="left", style=get_theme_style("text_body"))
     info_table.add_column(justify="left", style=get_theme_style("text_value"))
@@ -57,6 +58,7 @@ def show_main_menu(profile):
         expand=True
     ))
 
+    # Menu utama (tanpa tema & keluar)
     menu_items = [
         ("1", "Login/Ganti akun"),
         ("2", "Lihat Paket Saya"),
@@ -78,8 +80,6 @@ def show_main_menu(profile):
         ("00", "Bookmark Paket"),
         ("66", "Simpan Family Code"),
         ("77", f"[{get_theme_style('border_warning')}]Info Unlock Code [/]"),
-        ("88", f"[{get_theme_style('text_sub')}]Ganti Tema CLI [/]"),
-        ("99", f"[{get_theme_style('text_err')}]Tutup Aplikasi [/]"),
     ]
 
     mid = len(menu_items) // 2
@@ -108,6 +108,20 @@ def show_main_menu(profile):
         grid,
         title=f"[{get_theme_style('text_title')}]✨ Menu Utama ✨[/]",
         border_style=get_theme_style("border_primary"),
+        expand=True
+    ))
+
+    # Panel terpisah untuk pengaturan & sistem
+    sys_table = Table(show_header=False, box=MINIMAL_DOUBLE_HEAD, pad_edge=False, expand=True)
+    sys_table.add_column("Kode", justify="right", style=get_theme_style("text_key"), width=1)
+    sys_table.add_column("Menu", style=get_theme_style("text_body"))
+    sys_table.add_row("88", f"[{get_theme_style('text_sub')}]🎨 Ganti Tema CLI[/]")
+    sys_table.add_row("99", f"[{get_theme_style('text_err')}]⛔ Tutup Aplikasi[/]")
+
+    console.print(Panel(
+        sys_table,
+        title=f"[{get_theme_style('text_title')}]⚙️ Pengaturan & Sistem[/]",
+        border_style=get_theme_style("border_warning"),
         expand=True
     ))
 
