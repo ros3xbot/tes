@@ -66,7 +66,7 @@ def show_main_menu(profile):
         ("6", "💶 Beli Paket via Family Code"),
         ("7", "🔁 Beli Semua Paket di Family Code"),
         ("8", "📜 Riwayat Transaksi"),
-        ("9", "☕ Family Plan/Akrab Organizer"),
+        ("9", "☕ Akrab Organizer"),
         ("10", "🌀 Circle"),
         ("11", "🏪 Special For You"),
         ("12", "📚 List Family Code"),
@@ -87,13 +87,13 @@ def show_main_menu(profile):
     right_items = menu_items[mid:]
 
     left_table = Table(show_header=False, box=MINIMAL_DOUBLE_HEAD, expand=True)
-    left_table.add_column("Kode", justify="right", style=get_theme_style("text_key"), width=0)
+    left_table.add_column("Kode", justify="right", style=get_theme_style("text_key"), width=1)
     left_table.add_column("Menu", style=get_theme_style("text_body"))
     for kode, label in left_items:
         left_table.add_row(kode, label)
 
     right_table = Table(show_header=False, box=MINIMAL_DOUBLE_HEAD, expand=True)
-    right_table.add_column("Kode", justify="right", style=get_theme_style("text_key"), width=0)
+    right_table.add_column("Kode", justify="right", style=get_theme_style("text_key"), width=1)
     right_table.add_column("Menu", style=get_theme_style("text_body"))
     for kode, label in right_items:
         right_table.add_row(kode, label)
