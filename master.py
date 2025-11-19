@@ -60,7 +60,7 @@ def show_main_menu(profile):
     ))
 
 
-    special_packages = get_segments.get("special_packages", [])
+    special_packages = segments.get("special_packages", [])
     if special_packages:
         best = random.choice(special_packages)
 
