@@ -95,7 +95,7 @@ def show_main_menu(profile):
 
     # tabel kanan compact
     right_table = Table(show_header=False, box=MINIMAL_DOUBLE_HEAD, pad_edge=False, expand=False)
-    right_table.add_column("Kode", justify="right", style=get_theme_style("text_key"), width=3)
+    right_table.add_column("Kode", justify="right", style=get_theme_style("text_key"), width=1)
     right_table.add_column("Menu", style=get_theme_style("text_body"))
     for kode, label in right_items:
         right_table.add_row(kode, label)
