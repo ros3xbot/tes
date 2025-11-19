@@ -6,7 +6,7 @@ from datetime import datetime
 from rich.console import Console
 from rich.panel import Panel
 from rich.table import Table
-from rich.box import MINIMAL_DOUBLE_HEAD
+from rich.box import MINIMAL_DOUBLE_HEAD, ROUNDED
 from app.config.theme_config import get_theme_style
 from app.menus.util import (
     clear_screen, pause, print_panel, print_error, print_warning, get_rupiah
@@ -88,14 +88,14 @@ def show_main_menu(profile):
     right_items = menu_items[mid:]
 
     # tabel kiri
-    left_table = Table(show_header=False, box=MINIMAL_DOUBLE_HEAD, pad_edge=False, expand=False)
+    left_table = Table(show_header=False, box=ROUNDED, pad_edge=False, expand=False)
     left_table.add_column("Kode", justify="right", style=get_theme_style("text_key"), width=3)
     left_table.add_column("Menu", style=get_theme_style("text_body"))
     for kode, label in left_items:
         left_table.add_row(kode, label)
 
     # tabel kanan
-    right_table = Table(show_header=False, box=MINIMAL_DOUBLE_HEAD, pad_edge=False, expand=False)
+    right_table = Table(show_header=False, box=ROUNDED, pad_edge=False, expand=False)
     right_table.add_column("Kode", justify="right", style=get_theme_style("text_key"), width=3)
     right_table.add_column("Menu", style=get_theme_style("text_body"))
     for kode, label in right_items:
