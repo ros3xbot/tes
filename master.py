@@ -33,7 +33,7 @@ from app.menus.store.redemables import show_redeemables_menu
 from app.service.sentry import enter_sentry_mode
 from app.menus.info import show_info_menu
 from app.menus.family_grup import show_family_grup_menu
-from app.client.store.segments import get_segments
+from app.client.store.segments import segments
 
 console = Console()
 
